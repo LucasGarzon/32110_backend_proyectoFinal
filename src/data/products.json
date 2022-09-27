@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "timestamp": "27/9/2022 11:26:32",
+    "nombre": "producto 1",
+    "descripcion": "Este es un producto de prueba",
+    "codigo": "5a5gdsF3241",
+    "foto": "URL",
+    "precio": 880,
+    "stock": 903
+  },
+  {
+    "id": 2,
+    "timestamp": "27/9/2022 11:26:49",
+    "nombre": "producto 2",
+    "descripcion": "Este es un producto de prueba",
+    "codigo": "5a5gdsFfds41",
+    "foto": "URL",
+    "precio": 880,
+    "stock": 903
+  }
+]
