@@ -8,8 +8,12 @@ router.get('/', (req, res) => {
   manager.findAllCart().then(result => res.send(result))
 })
 
+router.get('/:id/productos', (req, res) => {
+  if (isNaN(req.params.id)) return res.status(404).send({error: -2, descripcion:`ruta ${req.baseUrl} método ${req.method} no implementada`})
+  manager.findCartById(req.params.id).then(result => res.send(result))
+})
+
 router.post('/', (req, res) => {
-  // if (!req.body.nombre || !req.body.descripcion || !req.body.codigo || !req.body.foto || !req.body.precio || !req.body.stock) return res.send({error: 0, descripcion:'Faltan datos obligatorios'})
   manager.createCart(req.body).then(result => res.send(result))
 })
 
@@ -19,6 +23,12 @@ router.delete('/:id', (req, res) => {
     if (!result) return res.send({error: 0, descripcion:'carrito no encontrado'})
     res.send({status: 200, message: 'Cart deleted', carts:result})
   })
+})
+
+router.put('/:id/productos', (req, res) => {
+  if (isNaN(req.params.id)) return res.status(404).send({error: -2, descripcion:`ruta ${req.baseUrl} método ${req.method} no implementada`})
+  if (!req.body.idProducto) return res.send({error: 0, descripcion:'Faltan datos obligatorios'})
+  manager.updateCart(req.params.id, req.body).then(result => res.send(result))
 })
 
 

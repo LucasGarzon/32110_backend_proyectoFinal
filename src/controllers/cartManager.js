@@ -52,6 +52,30 @@ class ManagerCarrito {
     await fs.promises.writeFile(pathToFile, JSON.stringify(carts, null, 2))
     return carts
   }
+
+  findCartById = async (id) => {
+    if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
+    let data = await fs.promises.readFile(pathToFile, 'utf-8')
+    let carts = JSON.parse(data)
+    id = parseInt(id)
+    let cart = carts.find(item => item.id === id)
+    if (!cart) return {error: 0, descripcion:"carrito no encontrado"}
+    return cart.productos
+  } 
+
+  updateCart = async (id, newProduct) => {
+    if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
+    let data = await fs.promises.readFile(pathToFile, 'utf-8')
+    let carts = JSON.parse(data)
+    let producto = await manager.findById(newProduct.idProducto)
+    if (!producto) return {error: 0, descripcion:"producto no encontrado"}
+    id = parseInt(id)
+    let cart = carts.find(item => item.id === id)
+    if (!cart) return {error: 0, descripcion:"carrito no encontrado"}
+    cart.productos.push(producto)
+    await fs.promises.writeFile(pathToFile, JSON.stringify(carts, null, 2))
+    return carts.find(item => item.id === id)
+  }
 }
 
 module.exports = ManagerCarrito

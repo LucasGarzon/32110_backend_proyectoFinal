@@ -12,6 +12,42 @@
         "foto": "URL",
         "precio": 880,
         "stock": 903
+      },
+      {
+        "id": 1,
+        "timestamp": "28/9/2022 13:12:04",
+        "nombre": "producto 1",
+        "descripcion": "Este es un producto de prueba",
+        "codigo": "5a5gfds41",
+        "foto": "URL",
+        "precio": 880,
+        "stock": 903
+      },
+      {
+        "id": 1,
+        "timestamp": "28/9/2022 13:12:04",
+        "nombre": "producto 1",
+        "descripcion": "Este es un producto de prueba",
+        "codigo": "5a5gfds41",
+        "foto": "URL",
+        "precio": 880,
+        "stock": 903
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "timestamp": "28/9/2022 16:27:54",
+    "productos": [
+      {
+        "id": 1,
+        "timestamp": "28/9/2022 13:12:04",
+        "nombre": "producto 1",
+        "descripcion": "Este es un producto de prueba",
+        "codigo": "5a5gfds41",
+        "foto": "URL",
+        "precio": 880,
+        "stock": 903
       }
     ]
   }
