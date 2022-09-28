@@ -11,13 +11,8 @@ class ManagerProducto {
         let id = products[products.length-1].id+1
         producto = {
           id, 
-          "timestamp" : new Date().toLocaleString(),
-          "nombre": producto.nombre,
-          "descripcion": producto.descripcion,
-          "codigo": producto.codigo,
-          "foto" : producto.foto,
-          "precio": parseInt(producto.precio),
-          "stock": parseInt(producto.stock)
+          timestamp : new Date().toLocaleString(),
+          ...producto
         }
         products.push(producto)
         await fs.promises.writeFile(pathToFile, JSON.stringify(products, null, 2))
@@ -25,17 +20,11 @@ class ManagerProducto {
       } else {
         let id = 1
         producto = {
-          id,
-          "timestamp" : new Date().toLocaleString(),
-          "nombre": producto.nombre,
-          "descripcion": producto.descripcion,
-          "codigo": producto.codigo,
-          "foto" : producto.foto,
-          "precio": parseInt(producto.precio),
-          "stock": parseInt(producto.stock)
+          id, 
+          timestamp : new Date().toLocaleString(),
+          ...producto
         }
         await fs.promises.writeFile(pathToFile, JSON.stringify([producto], null, 2))
-        console.log([producto])
         return [producto]
       }
     } catch(err) {
@@ -44,61 +33,47 @@ class ManagerProducto {
   } 
 
   findAll = async () => {
-    let productos = []
-    if (fs.existsSync(pathToFile)) {
-      let data = await fs.promises.readFile(pathToFile, 'utf-8')
-      productos = JSON.parse(data)
-      return productos
-    } else {
-      return {error:"No existen productos"}
-    }
+    if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
+    let data = await fs.promises.readFile(pathToFile, 'utf-8')
+    return JSON.parse(data)
   }
 
   findById = async (id) => {
-    let productos = []
-    if (fs.existsSync(pathToFile)) {
-      let data = await fs.promises.readFile(pathToFile, 'utf-8')
-      productos = JSON.parse(data)
-      id = parseInt(id)
-      return productos.find(item => item.id === id)
-    } else {
-      return {error:"No existen productos"}
-    }
+    if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
+    let data = await fs.promises.readFile(pathToFile, 'utf-8')
+    let productos = JSON.parse(data)
+    id = parseInt(id)
+    let producto = productos.find(item => item.id === id)
+    return producto
   } 
 
   update = async (id, product) => {
-    let productos = []
-    if (fs.existsSync(pathToFile)) {
-      let data = await fs.promises.readFile(pathToFile, 'utf-8')
-      productos = JSON.parse(data)
-      id = parseInt(id)
-      let newProducts = productos.map(item => {
-        if (item.id === id) {
-          return {
-            id, 
-            ...product
-          }
-        } else return item
-      })
-      productos = newProducts
-      await fs.promises.writeFile(pathToFile, JSON.stringify(productos, null, 2))
-      return this.findById(id)
-    } else {
-      return {error:"No existen productos"}
-    }
+    if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
+    let data = await fs.promises.readFile(pathToFile, 'utf-8')
+    let productos = JSON.parse(data)
+    id = parseInt(id)
+    let newProducts = productos.map(item => {
+      if (item.id === id) {
+        return {
+          id, 
+          ...product
+        }
+      } else return item
+    })
+    productos = newProducts
+    await fs.promises.writeFile(pathToFile, JSON.stringify(productos, null, 2))
+    return productos.find(item => item.id === id)
   }
 
   delete = async (id) => {
-    let productos = []
-    if (fs.existsSync(pathToFile)) {
-      let data = await fs.promises.readFile(pathToFile, 'utf-8')
-      productos = JSON.parse(data)
-      id = parseInt(id)
-      let newProducts = productos.filter(item => item.id !== id)
-      productos = newProducts
-      await fs.promises.writeFile(pathToFile, JSON.stringify(productos, null, 2))
-      return productos
-    }
+    if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
+    let data = await fs.promises.readFile(pathToFile, 'utf-8')
+    let productos = JSON.parse(data)
+    id = parseInt(id)
+    let newProducts = productos.filter(item => item.id !== id)
+    productos = newProducts
+    await fs.promises.writeFile(pathToFile, JSON.stringify(productos, null, 2))
+    return productos
   }
 }
 

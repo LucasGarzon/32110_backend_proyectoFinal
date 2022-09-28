@@ -1,19 +1,20 @@
 [
   {
     "id": 1,
-    "nombre": "producto modificado",
+    "timestamp": "28/9/2022 13:12:04",
+    "nombre": "producto 1",
     "descripcion": "Este es un producto de prueba",
-    "codigo": "5a5gds13Ffds41",
+    "codigo": "5a5gfds41",
     "foto": "URL",
     "precio": 880,
     "stock": 903
   },
   {
-    "id": 3,
-    "timestamp": "27/9/2022 14:33:58",
-    "nombre": "producto 4",
+    "id": 2,
+    "timestamp": "28/9/2022 13:12:10",
+    "nombre": "producto 2",
     "descripcion": "Este es un producto de prueba",
-    "codigo": "5a5gdfaqsFfds41",
+    "codigo": "5a5gfds41",
     "foto": "URL",
     "precio": 880,
     "stock": 903
