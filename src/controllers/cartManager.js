@@ -36,12 +36,6 @@ class ManagerCarrito {
     }
   }
 
-  findAllCart = async () => {
-    if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
-    let data = await fs.promises.readFile(pathToFile, 'utf-8')
-    return JSON.parse(data)
-  }
-
   deleteCart = async (id) => {
     if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
     let data = await fs.promises.readFile(pathToFile, 'utf-8')
@@ -49,6 +43,19 @@ class ManagerCarrito {
     id = parseInt(id)
     let newCarts = carts.filter(item => item.id !== id)
     carts = newCarts
+    await fs.promises.writeFile(pathToFile, JSON.stringify(carts, null, 2))
+    return carts
+  }
+
+  deleteCartProduct = async (id, id_prod) => {
+    if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
+    let data = await fs.promises.readFile(pathToFile, 'utf-8')
+    let carts = JSON.parse(data)
+    let cart = carts.find(item => item.id === parseInt(id))
+    if (!cart) return {error: 0, descripcion: "carrito no encontrado"}
+    if (!cart.productos.find(item => item.id === parseInt(id_prod))) return {error: 0, descripcion: "producto no encontrado en carrito"}
+    let newProducts = cart.productos.filter(item => item.id !== parseInt(id_prod))
+    cart.productos = newProducts
     await fs.promises.writeFile(pathToFile, JSON.stringify(carts, null, 2))
     return carts
   }
@@ -69,12 +76,11 @@ class ManagerCarrito {
     let carts = JSON.parse(data)
     let producto = await manager.findById(newProduct.idProducto)
     if (!producto) return {error: 0, descripcion:"producto no encontrado"}
-    id = parseInt(id)
-    let cart = carts.find(item => item.id === id)
+    let cart = carts.find(item => item.id === parseInt(id))
     if (!cart) return {error: 0, descripcion:"carrito no encontrado"}
     cart.productos.push(producto)
     await fs.promises.writeFile(pathToFile, JSON.stringify(carts, null, 2))
-    return carts.find(item => item.id === id)
+    return cart
   }
 }
 
