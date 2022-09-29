@@ -42,8 +42,8 @@ class ManagerProducto {
     if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
     let data = await fs.promises.readFile(pathToFile, 'utf-8')
     let productos = JSON.parse(data)
-    id = parseInt(id)
-    let producto = productos.find(item => item.id === id)
+    let producto = productos.find(item => item.id === parseInt(id))
+    if (!producto) return {error: 0, descripcion: "no se encontró el producto"}
     return producto
   } 
 
@@ -52,10 +52,12 @@ class ManagerProducto {
     let data = await fs.promises.readFile(pathToFile, 'utf-8')
     let productos = JSON.parse(data)
     id = parseInt(id)
+    if (!productos.find(item => item.id === id)) return {error:0, descripcion: "no se encontró el producto"}
     let newProducts = productos.map(item => {
       if (item.id === id) {
         return {
           id, 
+          timestamp: item.timestamp,
           ...product
         }
       } else return item
@@ -69,8 +71,8 @@ class ManagerProducto {
     if (!fs.existsSync(pathToFile)) return {error: 0, descripcion: "No existe la BD"}
     let data = await fs.promises.readFile(pathToFile, 'utf-8')
     let productos = JSON.parse(data)
-    id = parseInt(id)
-    let newProducts = productos.filter(item => item.id !== id)
+    if (!productos.find(item => item.id === parseInt(id))) return {error:0, descripcion: "no se encontró el producto"}
+    let newProducts = productos.filter(item => item.id !== parseInt(id))
     productos = newProducts
     await fs.promises.writeFile(pathToFile, JSON.stringify(productos, null, 2))
     return productos
