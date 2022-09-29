@@ -42,6 +42,4 @@ router.delete('/:id/productos/:id_prod', (req, res) => {
     .catch(err => res.send({error: 0, descripcion:err}))
 })
 
-
-
 module.exports = router
