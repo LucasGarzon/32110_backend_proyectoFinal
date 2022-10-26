@@ -37,9 +37,8 @@ export class ProductosMongo {
   }
 
   async seleccionarProducto(id) {
-    const { id } = req.params
     const product = await EsquemaProductos.findById(id)
-    if (!product) return res.status(404).json({ message: 'Producto no encontrado'})
+    if (!product) return ('Producto no encontrado')
     return product
   }
 
