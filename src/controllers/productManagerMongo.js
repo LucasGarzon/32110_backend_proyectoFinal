@@ -1,4 +1,3 @@
-import '../daos/loaderMongo.js'
 import { EsquemaProductos } from '../models/productModel.js'
 
 export class ProductosMongo { 
