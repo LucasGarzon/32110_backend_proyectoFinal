@@ -7,5 +7,4 @@ class Loaders {
 }
 
 const loader = new Loaders()
-
 export default loader

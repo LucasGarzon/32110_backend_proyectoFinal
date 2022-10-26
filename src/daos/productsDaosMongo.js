@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 
-const uri = "mongodb+srv://coderuser:m0UT39tsieEmsxJ5@codercluster.q42yf0t.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://coderuser:m0UT39tsieEmsxJ5@codercluster.q42yf0t.mongodb.net/proyectoFinal";
+
 // export const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 export default async function startDB(){
@@ -9,4 +10,5 @@ export default async function startDB(){
     console.log('base de datos Mongo conectada!');
   })
 }
+
 
