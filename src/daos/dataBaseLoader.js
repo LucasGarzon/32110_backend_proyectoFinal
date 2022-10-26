@@ -1,4 +1,4 @@
-import startDB from './productsDaosMongo.js'
+import startDB from './loaderMongo.js'
 
 class Loaders {
   start() {

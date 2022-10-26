@@ -1,4 +1,4 @@
-import '../daos/productsDaosMongo.js'
+import '../daos/loaderMongo.js'
 import { EsquemaCarrito } from '../models/cartModel.js'
 import {ProductosMongo} from './productManagerMongo.js'
 const manager = new ProductosMongo()

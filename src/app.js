@@ -1,7 +1,7 @@
 import express from 'express'
 import {productRouter} from './router/router_products.js'
 import {cartRouter} from './router/router_cart.js'
-import loader from './daos/productsLoader.js'
+import loader from './daos/dataBaseLoader.js'
 
 loader.start()
 
