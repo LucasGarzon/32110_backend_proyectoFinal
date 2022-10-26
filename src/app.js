@@ -1,6 +1,9 @@
-const express = require('express')
-const productRouter = require('./router/router_products.js')
-const cartRouter = require('./router/router_cart')
+import express from 'express'
+import {productRouter} from './router/router_products.js'
+import {cartRouter} from './router/router_cart.js'
+import loader from './daos/productsLoader.js'
+
+loader.start()
 
 const app = express()
 const PORT = process.env.PORT || 8080

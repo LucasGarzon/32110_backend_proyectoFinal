@@ -1,10 +1,11 @@
-const fs = require('fs')
-const ManagerProduct = require('./productManager.js')
-const manager = new ManagerProduct()
+import fs from 'fs'
+import {ManagerProducto} from './productManager.js'
+// const ManagerProducto = require('./productManager.js')
+const manager = new ManagerProducto()
 
 const pathToFile = './src/data/carts.json'
 
-class ManagerCarrito {
+export class ManagerCarrito {
   createCart = async (newCart) => {
     try {
       let producto = await manager.findById(newCart.idProducto)
@@ -86,4 +87,3 @@ class ManagerCarrito {
 
 }
 
-module.exports = ManagerCarrito

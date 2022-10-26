@@ -1,8 +1,8 @@
-const fs = require('fs')
+import fs from 'fs'
 
 const pathToFile = './src/data/products.json'
 
-class ManagerProducto {
+export class ManagerProducto {
   create = async (producto) => {
     try {
       if (fs.existsSync(pathToFile)) {
@@ -79,4 +79,4 @@ class ManagerProducto {
   }
 }
 
-module.exports = ManagerProducto
+// module.exports = ManagerProducto
