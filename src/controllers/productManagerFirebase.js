@@ -59,3 +59,13 @@ export class ProductosFirebase {
   }
 
 }
+
+export async function seleccionarProducto(id) {
+  const doc = await productos.doc(id).get()
+  if (!doc.data()) return ('Producto no encontrado')
+  const producto = {
+    id: id,
+    ...doc.data()
+  }
+  return producto
+}
