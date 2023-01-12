@@ -1,0 +1,23 @@
+[
+  { "code": "54", "name": "Argentina" },
+  { "code": "55", "name": "Brasil" },
+  { "code": "56", "name": "Chile" },
+  { "code": "57", "name": "Colombia" },
+  { "code": "502", "name": "Guatemala" },
+  { "code": "51", "name": "Perú" },
+  { "code": "58", "name": "Venezuela" },
+  { "code": "501", "name": "Belize" },
+  { "code": "1", "name": "EE.UU. y Canada" },
+  { "code": "52", "name": "México" },
+  { "code": "53", "name": "Cuba" },
+  { "code": "507", "name": "Panamá" },
+  { "code": "599", "name": "Curazao" },
+  { "code": "599", "name": "Aruba" },
+  { "code": "599", "name": "Sint Maarten" },
+  { "code": "599", "name": "Bonaire, Sint Eustatius y Saba" },
+  { "code": "599", "name": "Islas Turcas y Caicos" },
+  { "code": "599", "name": "Islas Caimán" },
+  { "code": "599", "name": "Islas Virgenes Britanicas" },
+  { "code": "599", "name": "Islas menores alejadas de los Estados Unidos" },
+  { "code": "599", "name": "Islas Malvinas" }
+]

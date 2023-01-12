@@ -1,10 +1,10 @@
-import startDB from './loaderMongo.js'
+const startDB = require('./loaderMongo.js')
 
 class Loaders {
   start() {
-    startDB()
+    startDB.startDB()
   }
 }
 
 const loader = new Loaders()
-export default loader
+module.exports = loader

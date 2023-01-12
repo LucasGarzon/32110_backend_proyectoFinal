@@ -1,8 +1,8 @@
-import { EsquemaCarrito } from '../models/cartModel.js'
-import {ProductosMongo} from './productManagerMongo.js'
+const { EsquemaCarrito } = require('../models/cartModel.js')
+const { ProductosMongo } = require('./productManagerMongo.js') 
 const manager = new ProductosMongo()
 
-export class ManagerCarrito {
+class ManagerCarrito {
 
   async findAllCarts(req, res) {
     try {
@@ -66,3 +66,5 @@ export class ManagerCarrito {
     }   
   }
 }
+
+module.exports = {ManagerCarrito}

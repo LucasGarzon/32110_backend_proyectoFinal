@@ -7,22 +7,46 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <title>Proyecto Final || Sign-Up</title>
 </head>
-<body class="container bg-dark">
-  <div class="container row m-auto mt-3">
-    <div class="m-auto alert alert-dark col-lg-4 pull-center">
-      <h1 class="m-3">Sign-up</h1>
-      <form autocomplete="off" action="/singup" method="post">
-          <div class="m-3 form-group">
+<body class="bg-dark">
+  <div class="row">
+    <div class="mx-auto col-lg-4">
+      <div class="alert alert-dark">
+        <h1 class="text-center mb-3">Sign-up</h1>
+        <form autocomplete="off" action="/signup" method="post">
+          <div class="form-group">
               <label class="mb-1">Username: *</label>
               <input class="form-control" required type="text" name="username"/>
           </div>
-          <div class="m-3 form-group">
+          <div class="form-group">
               <label class="mb-1">Email: *</label>
               <input class="form-control" required type="text" name="email"/>
           </div>
-          <div class="m-3 form-group">
+          <div class="form-group">
               <label class="mb-1">Password: *</label>
               <input class="form-control" required type="password" name="password"/>
+          </div>
+          <div class="form-group">
+              <label class="mb-1">Name: *</label>
+              <input class="form-control" required type="text" name="name"/>
+          </div>
+          <div class="form-group">
+              <label class="mb-1">Adress: *</label>
+              <input class="form-control" required type="text" name="adress"/>
+          </div>
+          <div class="form-group">
+              <label class="mb-1">Age: *</label>
+              <input class="form-control" required type="number" name="age"/>
+          </div>
+          <div class="form-group">
+            <label class="mb-1">Phone: *</label>
+            <div class="d-flex">
+              <select class="form-control" id="phone-code" name="phoneCode">
+                <% countryCodes.forEach(function(code) { %>
+                  <option value="<%= code.code %>">+<%= code.code %> (<%= code.name %>)</option>
+                <% }); %>
+              </select>
+              <input class="form-control" required type="text" name="phone"/>
+            </div>
           </div>
           <div class="d-flex flex-column flex-lg-row justify-content-between">
               <div class="form-group m-3">

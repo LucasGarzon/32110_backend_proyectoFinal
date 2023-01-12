@@ -1,6 +1,6 @@
-import passport from 'passport';
-import { Strategy as LocalStrategy } from 'passport-local';
-import User from '../models/userModel.js';
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const User = require('../models/userModel.js');
 
 passport.use(new LocalStrategy({
     usernameField: 'email',
@@ -30,5 +30,6 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-export default passport;
+module.exports = passport;
+
 

@@ -1,6 +1,6 @@
-import { EsquemaProductos } from '../models/productModel.js'
+const { EsquemaProductos } = require('../models/productModel.js')
 
-export class ProductosMongo { 
+class ProductosMongo { 
   async create(req, res) {
     const createdProduct = await EsquemaProductos.create(req.body)
     return res.status(200).json(createdProduct)
@@ -42,3 +42,5 @@ export class ProductosMongo {
   }
 
 }
+
+module.exports = { ProductosMongo }

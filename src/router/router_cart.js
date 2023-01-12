@@ -1,8 +1,6 @@
-import express from 'express';
-
+const express = require('express');
 const router = express.Router();
-
-import {ManagerCarrito} from '../controllers/cartManagerMongo.js'
+const {ManagerCarrito} = require('../controllers/cartManagerMongo.js');
 const manager = new ManagerCarrito()
 
 router.post('/', manager.createCart)
@@ -13,4 +11,4 @@ router.delete('/:id/productos/:id_prod', manager.deleteCartProduct)
 router.delete('/:id', manager.deleteCart)
 
 const cartRouter = router;
-export {cartRouter};
+module.exports = {cartRouter};

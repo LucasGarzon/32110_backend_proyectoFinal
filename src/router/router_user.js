@@ -1,7 +1,8 @@
-import express from 'express';
-import { UsuariosMongo } from '../controllers/userManagerMongo.js';
-import passport from 'passport';
-import '../strategies/localStrategies.js'
+const express = require('express');
+const {UsuariosMongo} = require('../controllers/userManagerMongo.js');
+const passport = require('passport');
+const telCodes = require('../config/countryCodes.json')
+require('../strategies/localStrategies.js')
 
 const router = express.Router();
 const manager = new UsuariosMongo()
@@ -11,8 +12,12 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
-  res.render('signup');
+  res.render('signup', {countryCodes: telCodes});
 });
+
+router.get('/registerError', (req, res) => {
+  res.render('errors/registerError')
+})
 
 router.post('/signup', manager.createUser);
 
@@ -24,4 +29,4 @@ router.get('/logout', (req, res) => {
 });
 
 const userRouter = router;
-export {userRouter}
+module.exports = {userRouter};

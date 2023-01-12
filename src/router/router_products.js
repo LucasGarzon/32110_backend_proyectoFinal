@@ -1,8 +1,6 @@
-import express from 'express';
-
+const express = require('express');
 const router = express.Router();
-
-import {ProductosMongo} from '../controllers/productManagerMongo.js'
+const {ProductosMongo} = require('../controllers/productManagerMongo.js');
 const manager = new ProductosMongo()
 
 router.post('/', manager.create)
@@ -12,4 +10,4 @@ router.put('/:id', manager.update)
 router.delete('/:id', manager.delete)
 
 const productRouter = router;
-export {productRouter};
+module.exports = {productRouter};
