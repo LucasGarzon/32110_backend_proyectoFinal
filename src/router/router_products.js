@@ -1,14 +1,15 @@
-import {Router} from 'express';
-const routes = Router()
+import express from 'express';
+
+const router = express.Router();
 
 import {ProductosMongo} from '../controllers/productManagerMongo.js'
 const manager = new ProductosMongo()
 
-routes.post('/', manager.create)
-routes.get('/', manager.findAll)
-routes.get('/:id', manager.findById)
-routes.put('/:id', manager.update)
-routes.delete('/:id', manager.delete)
+router.post('/', manager.create)
+router.get('/', manager.findAll)
+router.get('/:id', manager.findById)
+router.put('/:id', manager.update)
+router.delete('/:id', manager.delete)
 
-const productRouter = routes;
+const productRouter = router;
 export {productRouter};
